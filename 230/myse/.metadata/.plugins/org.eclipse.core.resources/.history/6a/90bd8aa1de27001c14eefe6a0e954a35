@@ -1,0 +1,167 @@
+
+public class Loop {
+
+	public static void main(String[] args) {
+		//while
+		int num=0;
+//		num++;   //1
+//		num++;   //2
+//		num++;   //3
+		
+		//5번 num변수값을 1증가하기 
+		int i=0;
+		while(i<5) {
+			num++; 
+			i++;  //반복횟수 
+			System.out.println("반복 횟수:" + i +", num변수값:" + num);
+		}
+		
+		num=1;
+		
+		// 5번 반복하면서 num변수값을 3배 증가하가ㅣ 
+		i=0;
+		
+		 //num값을 0으로 초기화 
+		   //3씩 곱하기를 해봄 
+		while(i<5) {
+			num*=3;
+			i++;
+			System.out.println("반복횟수:"+ i +", num변수값:" + num);
+		}
+		
+		
+		num=1;
+		i=0;
+		int sum=0;
+		
+//		sum += num;  //sum=sum+num;  sum=0+1;
+//		num=2;
+//		sum += num; //sum=sum+sum; sum=1+2;
+//		
+//		num=3;
+//		sum+= num; //sum=sum+num; sum-3+3; 
+//		
+		//num을 sumㅇ로 누적, 즉 합을 구한다. //하나의 스탭으로 구하면 0+1+2+3 
+		//5까지의 합을 구하면 
+		
+		while(i<10) { //1에서 5까지의 합을 구하는 작업 //i가 0이므로 10미만까지 하면 10개가 됨. 
+			//변하지 않는 구분 반복문 안쪽에 넣기 
+			sum+= num; 
+			//그 다음 변하는 구문을 넣으면 됨. 
+			num++; 
+			i++;
+			
+			//변수를 최소화하자. 
+		}
+		System.out.println("1~10까지의 합:" + sum);
+		
+		
+		num=1;
+		sum=0;
+		while(num<=10) { //1에서 5까지의 합을 구하는 작업 //i가 0이므로 10미만까지 하면 10개가 됨. 
+			//변하지 않는 구분 반복문 안쪽에 넣기 
+			sum+= num; 
+			//그 다음 변하는 구문을 넣으면 됨. 
+			num++; 
+			i++;
+			
+			//변수를 최소화하자. 
+		}
+		System.out.println("1~10까지의 합:" + sum);
+		// 1~10까지의 숫자를 출력하시오. 
+		num=1;
+		while(num<=10) {
+			System.out.println(num++);
+			
+		}
+		
+		System.out.println("1~10까지 중 홀수를 출격하시오. 1,3,5,7,9 ");
+		i=1;
+		while(i<=10) {
+			if(i%2!=0) {
+			System.out.println(i);
+			}
+			i++; 
+			
+		}//나 
+		
+		
+		num=1;
+		while(num<=10) {
+			System.out.println(num);//2씩 증가하면 1을 포함한 홀수를 뽑을 수 있다. 
+			num+=2;
+		}
+		
+		
+		
+		
+		
+		System.out.println("1~10까지의 숫자중 홀수의 합을 구하여 출력하시오."); 
+		int oddSum=0; 
+		num=1;
+		while(num<=10) {
+			oddSum+= num; 
+			num+=2;
+			System.out.println(oddSum);
+		}
+		
+		
+		//홀수를 출력하시오. 1,3,5,7,9,11,13,15,17,19 
+		//1부터 총 10개의 홀 수를 출력 
+		num=1;
+		i=0;
+		while(i<10) {
+			System.out.println(num);//2씩 증가하면 1을 포함한 홀수를 뽑을 수 있다. 
+			num+=2;
+			i++;
+		}
+		// A, B,C,D,E,F,G를 출력하시오. 
+		// 반복문 사용안하면 System.out.println();로 할 텐데 
+		char c='A';
+		while(c<='G') {
+			System.out.println(c);
+			c++;  //char타입은 int타입으로 자동 형변환 가능 //'A'+1 int타입이 되어 버림. => B   65가 A 
+			//7번 반복 수행해도 되고 g일 때까지 비교해도 됨 
+		}
+		
+		//키보드로 값 입력하기 
+//		System.out.println("입력하세요");
+		//사용자에게 값을 입력받아야 함. 
+		java.util.Scanner sc; //java타입의 util의 
+		sc= new java.util.Scanner(System.in);  //한번만 sc변수 선언하면 계속 키보드로 값을 받을 수 있음. 
+		
+		
+		String readValue="";
+//		while(!readValue.equals("quit")) {//while을 만족해야 다음 조건 수행 // 즉 quit과 quit을 만족할 때 반복해라 
+//			//equal앞에 !붙이면 not연산이 됨. 
+//			System.out.println("입력하세요(종료하려면 quit을 입력하세요):");
+//			readValue = sc.nextLine();// 리턴타입이 string타입임. 
+//			System.out.println("입력하신 값은 " + readValue + "입니다.");
+//			i++; //10번 반복 수행을 하겠다. 
+//		}
+		
+		//입력된 값이 따라서 반복을 유지할 지 아닐지 유지하고 싶어요 .
+//		readValue="";
+//		while(true) { //무조건이라는 의미의 true로 하고 
+//			System.out.println("입력하세요(종료하려면 quit을 입력하세요):");
+//			readValue = sc.nextLine();
+//			if(readValue.equals("quit")) {//quit 문자어 같은 때 
+//				break; 	
+//			}
+//			System.out.println("입력하신 값은 " + readValue + "입니다.");	
+//		}; 
+		
+		//2중 반복문 : 반복문 안에 반복문이 있는 구조 
+		
+		
+		
+		
+		//for
+		
+		
+		
+		//do while
+
+	}
+
+}

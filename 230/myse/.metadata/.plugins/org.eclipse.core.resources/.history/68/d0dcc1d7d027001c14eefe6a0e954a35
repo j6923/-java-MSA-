@@ -1,0 +1,22 @@
+
+public class Loop {
+
+	public static void main(String[] args) {
+		//while
+		int num=0;
+		num++;   //1
+		num++;   //2
+		num++;   //3
+		
+		//5번 num변수값을 1증가하기 
+		int i=0;
+		while(i<5) {
+			num++; 
+			i++;  //반복횟수 
+		}
+		//for
+		//do while
+
+	}
+
+}

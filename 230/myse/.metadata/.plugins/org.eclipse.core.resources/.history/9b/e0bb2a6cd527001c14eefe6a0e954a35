@@ -1,0 +1,84 @@
+
+public class Loop {
+
+	public static void main(String[] args) {
+		//while
+		int num=0;
+//		num++;   //1
+//		num++;   //2
+//		num++;   //3
+		
+		//5번 num변수값을 1증가하기 
+		int i=0;
+		while(i<5) {
+			num++; 
+			i++;  //반복횟수 
+			System.out.println("반복 횟수:" + i +", num변수값:" + num);
+		}
+		
+		num=1;
+		
+		// 5번 반복하면서 num변수값을 3배 증가하가ㅣ 
+		i=0;
+		
+		 //num값을 0으로 초기화 
+		   //3씩 곱하기를 해봄 
+		while(i<5) {
+			num*=3;
+			i++;
+			System.out.println("반복횟수:"+ i +", num변수값:" + num);
+		}
+		
+		
+		num=1;
+		i=0;
+		int sum=0;
+		
+//		sum += num;  //sum=sum+num;  sum=0+1;
+//		num=2;
+//		sum += num; //sum=sum+sum; sum=1+2;
+//		
+//		num=3;
+//		sum+= num; //sum=sum+num; sum-3+3; 
+//		
+		//num을 sumㅇ로 누적, 즉 합을 구한다. //하나의 스탭으로 구하면 0+1+2+3 
+		//5까지의 합을 구하면 
+		
+		while(i<10) { //1에서 5까지의 합을 구하는 작업 //i가 0이므로 10미만까지 하면 10개가 됨. 
+			//변하지 않는 구분 반복문 안쪽에 넣기 
+			sum+= num; 
+			//그 다음 변하는 구문을 넣으면 됨. 
+			num++; 
+			i++;
+			
+			//변수를 최소화하자. 
+		}
+		System.out.println("1~10까지의 합:" + sum);
+		
+		
+		num=1;
+		sum=0;
+		while(num<=10) { //1에서 5까지의 합을 구하는 작업 //i가 0이므로 10미만까지 하면 10개가 됨. 
+			//변하지 않는 구분 반복문 안쪽에 넣기 
+			sum+= num; 
+			//그 다음 변하는 구문을 넣으면 됨. 
+			num++; 
+			i++;
+			
+			//변수를 최소화하자. 
+		}
+		System.out.println("1~10까지의 합:" + sum);
+		// 1~10까지의 숫자를 출력하시오. 
+		i=0;
+		while(i<10) {
+			System.out.println(i);
+		}
+		
+		//for
+		
+		
+		//do while
+
+	}
+
+}

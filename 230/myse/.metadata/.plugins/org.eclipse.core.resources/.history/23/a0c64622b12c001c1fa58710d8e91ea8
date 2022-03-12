@@ -1,0 +1,14 @@
+
+class Customer{
+	
+}
+class CustomerDAO{
+	
+}
+public class CustomerManger {
+	public static void main(String[] args) {
+		
+
+	}
+
+}

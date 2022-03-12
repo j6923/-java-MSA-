@@ -1,0 +1,21 @@
+class B{
+	int iv;  //member field 라고 부름 
+	// static 안 부은 애를 인스턴스 변수-non static변수라고 부름
+	static int sv;   //static은 멤버 필드에서만 가능 
+	
+	
+	void im() {
+		
+	}
+	static void sm() {
+		
+	}
+}
+public class StaticTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,11 @@
+package practice;
+
+public class test51 {
+
+	public static void main(String[] args) {
+		int score =10;
+		String result = null;
+		result = score >= 20? "합격":"불합격";
+
+}
+}

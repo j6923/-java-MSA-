@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+E:\230\myse\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes

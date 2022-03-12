@@ -1,0 +1,14 @@
+class A{
+	//하나의 main 메소드를 가지고 있는 애는 main 클래스가 되어야 함. 
+	int iv; 
+	
+}
+
+public class Constructor {
+//자바에는 소멸자가 없다. 
+	public static void main(String[] args) {
+		A a1 = new A(); 
+
+	}
+
+}

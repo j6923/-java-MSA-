@@ -1,0 +1,22 @@
+
+public class Condition {
+
+	public static void main(String[] args) {
+		//if(조건문 a>b){}   if(논리형){}
+		int gend=1; 
+		if(gend==1|| gend==3) {
+			System.out.println("남자");
+		}
+		//if else
+		if(gend==1||gend==3) {
+			System.out.println("남자");
+		}else {
+			System.out.println("여자");
+		}
+		// if else if 
+		
+		//switch 
+
+	}
+
+}

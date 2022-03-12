@@ -1,0 +1,4 @@
+#comment dao.properties
+customer=com.my.customer.dao.CustomerDAOList
+#중간에 공백주지 말라. 대행 연산자가 아니고 키=벨류로. 공백을 키값에 공백을 포함하는 버전도 있음
+product=com.my.product.dao.ProductDAO 

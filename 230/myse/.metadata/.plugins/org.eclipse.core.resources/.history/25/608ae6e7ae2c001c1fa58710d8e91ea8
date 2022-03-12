@@ -1,0 +1,41 @@
+class B{
+	int iv;  //member field 라고 부름 
+	// static 안 부은 애를 인스턴스 변수-non static변수라고 부름
+	static int sv;   //static은 멤버 필드에서만 가능 
+	
+	
+	void im() {
+		
+	}
+	static void sm() {
+		
+	}
+}
+/**
+ * static변수 :  객체와 무고낳나 객체들간의 공유변수로 사용됨. 
+ * 				클래스 로드 후 자동 초기화된다. 
+ * 			   사용법 - 객체참조변수.static변수
+ * static 메서드 : 객체와 무관한 기능 제공
+ *               하기 위해 만듬 
+ * @author KOSTA
+ *
+ */
+public class StaticTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		B b1 = new B();
+		B b2 = new B();
+		b1.iv = 10;
+		System.out.println(b1.iv);  //10
+		System.out.println(b2.iv);  //0 
+//		System.out.println(b1.sv);  //0
+		System.out.println(B.sv);
+		
+		b1.sv++; 
+		System.out.println(B.sv); //1로 증가된 것을 볼 수 있다, 
+		System.out.println(b2.sv); 
+		// 될수 있으면 static 처리 방법으로 해라 
+	}
+
+}

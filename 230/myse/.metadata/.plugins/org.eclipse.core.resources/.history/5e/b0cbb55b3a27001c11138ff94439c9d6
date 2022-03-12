@@ -1,0 +1,93 @@
+
+public class Condition {
+
+	public static void main(String[] args) {
+		//if(조건문 a>b){}   if(논리형){}
+		int gend=1; 
+		if(gend==1|| gend==3) {
+			System.out.println("남자");
+		}
+		//if else
+		if(gend==1||gend==3) {
+			System.out.println("남자");
+			//;
+			//;
+		}else {
+			System.out.println("여자");
+			//;
+			//else는 독립적불가 if는 가능 
+		}
+		
+		if(gend==1||gend==3)
+			System.out.println("남자");
+		else
+			System.out.println("여자");
+		// if else if   
+		int hour = 15;
+		if(hour > 12 && hour <= 15) {
+			System.out.println("점심");
+		}else if(hour > 6 && hour<12) {
+			System.out.println("아침");
+		}else {
+			System.out.println("저녁");
+		}
+		
+		// 년도에 해당하는 12지를 출력하시오. 
+		//년도를 12로 나눈 나머지가 0이면 원숭이, 나머지가 1이면 닭, 나머지가 2이면 개, 나머지가 3이면 돼지
+		//				     4     쥐,        5 소,  6호랑이,   7토끼, 8용, 9, 뱀, 10말, 11양 
+		int year = 2021; 
+		if(year %12==0) {
+			System.out.println("원숭이");
+		}else if(year%12==1) {
+			System.out.println("닭");
+		}else if(year%12==2) {
+			System.out.println("개");
+		}else if(year%12==3) {
+			System.out.println("돼지");
+		}else if(year%12==4) {
+			System.out.println("쥐");
+		}else if(year%12==5) {
+			System.out.println("소");
+		}else if(year%12==6) {
+			System.out.println("호랑이");
+		}else if(year%12==7) {
+			System.out.println("토끼");
+		}else if(year%12==8) {
+			System.out.println("용");
+		}else if(year%12==9) {
+			System.out.println("뱀");
+		}else if(year%12==11) {
+			System.out.println("양");
+		
+			
+			
+		//2번쨰 방법 
+			int year1 = 2021; 
+			int mod = year%12;
+			if(mod==0) {
+				System.out.println("원숭이");
+			}else if(mod==1) {
+				System.out.println("닭");
+			}else if(mod==2) {
+				System.out.println("개");
+			}else if(mod==3) {
+				System.out.println("돼지");
+			}else if(mod==4) {
+				System.out.println("쥐");
+			}else if(mod==5) {
+				System.out.println("소");
+			}else if(mod==6) {
+				System.out.println("호랑이");
+			}else if(mod==7) {
+				System.out.println("토끼");
+			}else if(mod==8) {
+				System.out.println("용");
+			}else if(mod==9) {
+				System.out.println("뱀");
+			}else if(mod==11) {
+				System.out.println("양");
+       //switch
+			
+	}
+
+}
