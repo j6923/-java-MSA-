@@ -1,0 +1,44 @@
+<%@page import="java.util.Set"%>
+<%@page import="com.my.product.vo.Product"%>
+<%@page import="java.util.Map"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% 
+Map<Product, Integer>cart = (Map)request.getAttribute("cart");
+String msg = "";
+if(cart == null){ //장바구니가 없거나 비어있는 경우
+	msg = "장바구니가 비었습니다";
+%><%=msg %>
+<%}else{
+	Set<Product>products = cart.keySet();
+	
+%>
+<style>
+	table.cartlist{
+	width:100%;
+	border: 1px solid;
+	}
+	table.cartlist th, table.cartlist.td{
+	border: 1px solid;
+	}
+</style>
+<h3>장바구니 목록</h3>
+<table class="cartlist">
+<tr><th>상품번호</th>
+	<th>상품명</th>
+	<th>상품가격</th>
+	<th>수량</th>
+</tr>
+<%	for(Product p: products){
+		int qt = cart.get(p);
+%><tr>
+<tr><td><%=p.getProdNo() %></td>
+  <td><%=p.getProdName() %></td>
+  <td><%=p.getProdPrice() %></td>
+ <td> <%=qt%></td>
+  </tr>
+<%	}//end for
+%>
+</table>
+<%}//end if
+%>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;msa_project/src/main/webapp/css/board_content.css&apos; to &apos;board_content1.css&apos;" description="Rename resource &apos;board_content.css&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/css/board_content.css" name="board_content1.css" stamp="1640621125444" updateReferences="true"/>&#x0A;&#x0A;</session>

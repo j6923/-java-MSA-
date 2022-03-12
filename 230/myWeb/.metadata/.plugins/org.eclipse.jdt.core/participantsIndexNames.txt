@@ -1,0 +1,21 @@
+INDEX VERSION 1.131
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3129044020.index
+\project\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\144709186.index
+\firstEE\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\946793515.index
+\msa_project\Reco\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2026837047.index
+\thirdEE\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2678812152.index
+\msa_project\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4158360605.index
+\project\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3761159271.index
+\firstEE\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3296277536.index
+\secondEE\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2103450542.index
+\msa_project\src\main\java
+C:\230\myWeb\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1749908781.index
+\myMsaProject\src\main\java

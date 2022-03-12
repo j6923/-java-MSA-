@@ -1,0 +1,7 @@
+#Tomcat publish data
+#Tue Jan 04 17:09:47 KST 2022
+org.eclipse.jst.jee.server\:secondEE=C\:\\230\\SW\\apache-tomcat-10.0.13\\wtpwebapps\\secondEE
+org.eclipse.jst.jee.server\:myMsaProject=C\:\\230\\SW\\apache-tomcat-10.0.13\\wtpwebapps\\myMsaProject
+org.eclipse.jst.jee.server\:thirdEE=C\:\\230\\SW\\apache-tomcat-10.0.13\\wtpwebapps\\thirdEE
+org.eclipse.jst.jee.server\:firstEE=C\:\\230\\SW\\apache-tomcat-10.0.13\\wtpwebapps\\firstEE
+org.eclipse.jst.jee.server\:msa_project=C\:\\230\\SW\\apache-tomcat-10.0.13\\wtpwebapps\\msa_project
