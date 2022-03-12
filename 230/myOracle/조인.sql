@@ -1,0 +1,133 @@
+-- 사원의 사번, 이름, 부서번호, 부서명을 출력하시오 
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_id
+from employees; --107번 
+
+SELECT DEPARTMENT_ID, DEPARTMENT_NAME
+FROM DEPARTMENTS; --27개 
+
+SELECT* 
+FROM EMPLOYEES, DEPARTMENTS; --2889건 
+
+-- 오라클 전용 JOIN 표기법
+SELECT *
+FROM EMPLOYEES, DEPARTMENTS
+WHERE EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID; --106 건 
+-- 오라클 전용 표기법은 오라클에서밖에 사용하지 못한다. 
+
+--ANSI JOIN
+--INNER JOIN ON 
+--INNER는 생략이 가능하다. 
+SELECT EMPLOYEE_ID, FIRST_NAME, EMPLOYEES.DEPARTMENT_ID, DEPARTMENT_NAME 
+FROM EMPLOYEES JOIN DEPARTMENTS ON EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID;
+--EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID; 조건 
+-- 같은 이름의 컬럼은 어느 테이블 컬럼인지 
+
+--별칭을 부여했으면 별칭만 사용해야 한다. 
+SELECT EMPLOYEE_ID, FIRST_NAME, E.DEPARTMENT_ID, DEPARTMENT_NAME 
+FROM EMPLOYEES E JOIN DEPARTMENTS D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+-- 동일한 컬럼 어떤 것인지 안 써주면 에러남. 
+
+--나 -- 동일한 컬럼일 때 USING을 사용하면 된다. 
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, DEPARTMENT_ID, D.DEPARTMENT_NAME 
+FROM EMPLOYEES E JOIN DEPARTMENTS D USING (DEPARTMENT_ID);
+
+--NATURAL JOIN 
+-- 사원의 사번, 이름, 직무번호, 직무명을 출력하시오 
+SELECT EMPLOYEE_ID, FIRST_name, employees.job_id, job_title 
+FROM EMPLOYEES JOIN JOBS ON EMPLOYEES.JOB_ID = JOBS.JOB_ID; 
+
+--NATURAL JOIN으로 변경함. 
+SELECT EMPLOYEE_ID, FIRST_NAME, JOB_ID, JOB_TITLE
+FROM EMPLOYEES NATURAL JOIN JOBS;
+-- 동일 이름의 조건 값을 알아서 찾아줌. 
+-- 별칭을 사용하지 않는다. 
+-- 같은 이름의 컬럼값이 같은 행을 추출해온다. 
+-- 위험하다. 
+
+--잘못된 NATURAL JOIN을 살펴보자. 
+-- 사원의 사번 이름, 부서번호, 부서명을 출력하시오 
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_id, DEPARTMENT_NAME
+from employees NATURAL JOIN DEPARTMENTS;--(x) 
+-- 부서 장 정보만 출력이 될 것이다. 
+-- 의도한 바와 다르게 된다. 
+-- ID도 같고 메니저 아이디도 같고 
+-- 부서장을 관리자로 하고 있는 사원을 출력하는 것 \\
+
+--USING : 컬럼명이 동일한 경우 
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_id, DEPARTMENT_NAME
+from employees JOIN DEPARTMENTS USING (DEPARTMENT_ID);--OK 
+--- 위에 까지는 INNER JOIN 
+
+---OUTER JOIN 
+-- 사원의 사번, 이름, 부서번호, 부서명을 출력하시오 
+SELECT EMPLOYEE_ID, DEPARTMENT_ID, DEPARTMENT_NAME
+FROM EMPLOYEES JOIN DEPARTMENTS USING (DEPARTMENT_ID);
+
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME
+FROM EMPLOYEES E, DEPARTMENTS D 
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID; -- 오라클 조인 표기법 
+
+
+-- 사원의 사번, 이름, 부서번호, 부서명을 출력하시오 
+--부서없는 사원도 모두 출력한다. 
+SELECT EMPLOYEE_ID, DEPARTMENT_ID, DEPARTMENT_NAME
+FROM EMPLOYEES LEFT JOIN DEPARTMENTS USING (DEPARTMENT_ID);
+-- LEFT만 써도 LEFT OUTER JOIN과 동일한 효과이다.  
+
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME
+FROM EMPLOYEES E, DEPARTMENTS D 
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID(+); -- 오라클 조인 표기법 
+-- 오라클의 LEFT OUTER JOIN 표기법 
+-- 부족한 쪽 
+-- 즉 오른쪽에 표기한 것이 LEFT OUTER JOIN
+
+
+-- 사원의 사번, 이름, 부서번호, 부서명을 출력하시오 
+-- 사원없는 부서도 모두 출력한다. 
+-- 부족한 쪽이 사원이고 오른쪽이 기준이 되게 한다. 
+-- RIGHT OUTER JOIN 
+SELECT EMPLOYEE_ID,  DEPARTMENT_ID, DEPARTMENT_NAME
+FROM EMPLOYEES RIGHT JOIN DEPARTMENTS USING (DEPARTMENT_ID);
+--OUTER는 생략해도 된다. 
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, DEPARTMENT_NAME
+FROM EMPLOYEES E, DEPARTMENTS D 
+WHERE E.DEPARTMENT_ID(+) = D.DEPARTMENT_ID; -- 오라클 조인 표기법 
+-- 오라클의 LEFT OUTER JOIN 표기법 
+-- 부족한 쪽 
+-- 즉 오른쪽에 표기한 것이 LEFT OUTER JOIN
+
+-- 사원의 사번, 이름, 부서번호, 부서명을 출력하시오 
+-- 부서없는 사원도 출력하고, 사원없는 부서도 모두 출력한다. 
+-- 양쪽 테이블을 기준 삼아서 양쪽 다 출력되게 하는 것이다. 
+SELECT EMPLOYEE_ID, DEPARTMENT_ID, DEPARTMENT_NAME
+FROM EMPLOYEES FULL JOIN DEPARTMENTS USING (DEPARTMENT_ID);
+
+-- SELF JOIN
+-- 사원의 사번, 이름, 관리자번호, 관리자이름을 출력하시오 
+SELECT E.EMPLOYEE_ID 사번, E.FIRST_NAME 사원명, E.MANAGER_ID 관리자번호, M.FIRST_NAME 관리자명 
+FROM EMPLOYEES E
+JOIN EMPLOYEES M ON (E.MANAGER_ID = M.EMPLOYEE_ID); 
+
+-- 사원의 사번, 이름, 부서번호, 관리자번호, 관리자이름, 관리지소속부서를 출력하시오 
+SELECT E.EMPLOYEE_ID 사번, E.FIRST_NAME 사원명, E.DEPARTMENT_ID "사원 소속부서", E.MANAGER_ID 관리자번호, M.FIRST_NAME 관리자명,
+        M.DEPARTMENT_ID"관리자 소속부서"
+FROM EMPLOYEES E
+JOIN EMPLOYEES M ON (E.MANAGER_ID = M.EMPLOYEE_ID); 
+
+
+-- 사원의 사번, 이름, 부서번호, 관리자번호, 관리자이름, 관리지소속부서를 출력하시오 
+-- 사원부서와 관리자부서가 다른 사원들만 출력하시오 
+SELECT E.EMPLOYEE_ID 사번, E.FIRST_NAME 사원명, E.DEPARTMENT_ID "사원 소속부서", E.MANAGER_ID 관리자번호, M.FIRST_NAME 관리자명,
+        M.DEPARTMENT_ID"관리자 소속부서"
+FROM EMPLOYEES E
+JOIN EMPLOYEES M ON (E.MANAGER_ID = M.EMPLOYEE_ID)
+WHERE E.DEPARTMENT_ID<>M.DEPARTMENT_ID; -- 사원부서와 관리자부서가 다른 사원들
+
+-- 사원의 사번, 이름, 급여, 부서번호, 관리자번호, 관리자이름, 관리자급여, 관리지소속부서를 출력하시오 
+-- 사원급여와 관리자급여가 많은 사원들만 출력하시오 
+SELECT E.EMPLOYEE_ID 사번, E.FIRST_NAME 사원명, E.SALARY 급여, E.DEPARTMENT_ID "사원 소속부서", E.MANAGER_ID 관리자번호, M.FIRST_NAME 관리자명,
+       M.SALARY 관리자급여, M.DEPARTMENT_ID"관리자 소속부서"
+FROM EMPLOYEES E
+JOIN EMPLOYEES M ON (E.MANAGER_ID = M.EMPLOYEE_ID)
+WHERE E.SALARY > M.SALARY;
+
