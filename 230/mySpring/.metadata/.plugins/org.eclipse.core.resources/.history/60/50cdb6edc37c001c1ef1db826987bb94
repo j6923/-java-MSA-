@@ -1,0 +1,10 @@
+package com.my.customer.control;
+
+@Controller
+public class CustomerController {
+	@RequestMapping("/login")
+	public String login(String id, String pwd) {
+		f
+	}
+
+}

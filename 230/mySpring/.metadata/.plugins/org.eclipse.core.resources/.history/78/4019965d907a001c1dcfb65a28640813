@@ -1,0 +1,283 @@
+//---게시글 목록 보여주기 함수 시작--
+
+function showList(jsonData){
+		let pageDTO = jsonData;
+		
+		let url = pageDTO.url; 
+		let currentPage = pageDTO.currentPage;
+		let totalCnt = pageDTO.totalCnt;
+		let totalPage = pageDTO.startPage;
+		let endPage = pageDTO.endPage;
+		let startPage = pageDTO.startPage;
+		let list = pageDTO.list;
+		
+		
+		if(startPage > 1){
+			$("div.pagegroup").append("<span class='" >+ url+ "/"+ (startPage-1)+"</span>'")
+		}
+		for(let i= startPage; i<= endPage; i++){
+			if(i != currentPage){
+				$('div.pagegroup').append("<span class'" + url + "/" + i)
+			}else{
+				$("div.pagegroup").append("<span class'"+ url + "/"+ i)
+			}
+		}
+		if(totalPage > endPage){
+			$('div.pagegroup').append("<span class='" + url+ "/"+ (endPage+1))
+		}
+		console.log("div.pagegroup=" + $("div.pagegroup").html());
+		
+	//JSON구성 {},[]
+	/*let jsonData = 
+		[{boardNo : 1, 
+		  level : 1, //1-새글, 2-답글, 3-답글의답글, 4-답글의답글의 답글
+		  boardTitle: "게시글1", 
+	      boardC:{id:"id1", name:"오문정"}, 
+	      boardViewCount:10, 
+	      boardDt: "21/01/01", 
+	      boardDetail:"게시글1의 내용"
+	     },
+		 {boardNo : 2, 
+	      level : 2,
+		  boardTitle: "re-1", 
+	      boardC:{id:"id2", name:"홍길동"}, 
+	      boardViewCount:20, 
+	      boardDt: "21/01/02", 
+	      boardDetail:"게시글1의 답글내용"
+	     },
+		 {boardNo : 4, 
+	      level : 3,
+		  boardTitle: "re-re-1", 
+	      boardC:{id:"id3", name:"김자바"}, 
+	      boardViewCount:20, 
+	      boardDt: "21/01/02", 
+	      boardDetail:"게시글2의 답글내용"
+	     }, 
+	     {boardNo : 3, 
+          level : 1,
+		  boardTitle: "게시글3", 
+	      boardC:{id:"id3", name:"김자바"}, 
+	      boardViewCount:30, 
+	      boardDt: "21/01/03", 
+	      boardDetail:"게시글3의 내용"
+	     }];*/
+
+
+
+	//table tbody tr객체찾기
+	let $trObj = $("div.tbody>div.tr.row");	
+	$(list).each(function(index, element){
+		let $trCopyObj = $trObj.clone();//복제본
+		$trCopyObj.removeClass("row");
+		$trCopyObj.addClass("copy");
+		
+		let levelStr = '';
+		//&#10149;오른쪽화살표문자열
+		for(let i=1; i<element.level; i++){
+			levelStr += '&#10149';
+		}
+		let boardNo = element.boardNo;
+		let boardTitle = element.boardTitle;
+		let id = element.boardC.id;
+		let boardViewcount = element.boardViewcount;
+		let boardDt = element.boardDt;
+		let boardDetail = element.boardDetail;
+		$trCopyObj.find("div.no").html(levelStr + "<span>" + boardNo + "</span>");//게시글번호
+		$trCopyObj.find("div.title").html(boardTitle);//게시글제목
+		$trCopyObj.find("div.id").html(id);//작성자
+		$trCopyObj.find("div.viewcount").html(boardViewcount);//조회수
+		$trCopyObj.find("div.dt").html(boardDt);//작성일자
+		$trCopyObj.find("div.detail").html(boardDetail);//게시글내용	
+		$trCopyObj.show();
+		
+		$("div.tbody").append($trCopyObj); //복제본을 tbody에 추가
+		
+		
+		//--페이지 그룹---
+		
+		let pageGroupHtml = "";
+		if(startPage>1){
+			pageGroupHtml += '<span';
+			pageGroupHtml += ' class="'+ url+"/" + (startPage-1);
+			pageGroupHtml += 'active';
+			pageGroupHtml += '">';
+			pageGroupHtml += 'PREV';
+			pageGroupHtml += '</span>&nbsp;&nbsp;';
+			
+			
+		}
+		for(let i=startPage; i<=endPage; i++){
+			pageGroupHtml += '<span';
+			pageGroupHtml += 'class="' + url + "/" +i;
+			if(i != currentPage){
+				pageGroupHtml += 'active';
+			}
+			pageGroupHtml += '">';
+			pageGroupHtml += i;
+			pageGroupHtml += '</span>&nbsp; &nbsp;';
+			}
+			if(endPage<totalPage){
+				pageGroupHtml += '<span';
+				pageGroupHtml += 'class="' + url+"/" + (endPage+1);
+				pageGroupHtml += 'active';
+				pageGroupHtml += '">';
+				pageGroupHtml += 'NEXT';
+				pageGroupHtml += '</span>&nbsp;&nbsp;';
+			}
+	});
+}
+
+
+
+
+
+
+//--게시글 하나 클릭 시작--
+$('div.boardlist>div.table').on('click', 'div.tr.copy', function () {
+	var $trCurrentObj = $(this); //클릭이벤트가 발생된 현재행
+        var $summaryObj = $trCurrentObj.find("div.summary"); //summary영역
+        var $divDetail = $trCurrentObj.find('div.detail'); //글상세영역       
+        if($divDetail.css('display')=='block'){
+            $divDetail.css('display', 'none');
+            $divDetail.empty();
+            $summaryObj.css({"background-image": "url(./images/btn_arrow_down.png)"});
+            $summaryObj.css({"background-position": "right center"});
+            $summaryObj.css({"background-repeat": "no-repeat"});
+		}else{
+			 $divDetail.css('display', 'block');
+            $summaryObj.css({"background-image": "url(./images/btn_arrow_up.png)"});
+            $summaryObj.css({"background-position": "right center"});
+            $summaryObj.css({"background-repeat": "no-repeat"});
+
+            var no = $trCurrentObj.find('div.no>span').html(); //글번호찾기
+            $divDetail.load(frontContextPath + "/boardinfo.html", 
+                            function (){
+	
+				/*let jsonData = {
+					boardNo : 1, 
+		  			level : 1, //1-새글, 2-답글, 3-답글의답글, 4-답글의답글의 답글
+		  			boardTitle: "게시글1", 
+	      			boardC:{id:"id9", name:"오문정"}, 
+	      			boardViewcount:10, 
+	      			boardDt: "21/01/01", 
+	      			boardContent:"게시글1의 내용"
+				};
+				var $divInfo = $divDetail.find("div.info");
+				$divInfo.find("div.data>span.no").html(jsonData.boardNo);
+                $divInfo.find("div.data>span.title").html(jsonData.boardTitle);
+                $divInfo.find("div.data>span.id").html(jsonData.boardC.id);
+                $divInfo.find("div.data>span.dt").html(jsonData.boardDt);
+                $divInfo.find("div.data>textarea.content").html(jsonData.boardContent);
+                $divInfo.find("div.data>span.viewcount").html(jsonData.boardViewcount);
+                $trCurrentObj.find("div.viewcount").html(jsonData.boardViewcount);
+				if (jsonData.boardC.id != loginedId) { //로그인한 아이디가 쓴 글이 아니면 답글쓰기만 보여준다
+                     $divInfo.find("div.data>textarea.content").attr("readonly", "readonly");
+                     $divInfo.find("a.modify").hide();
+                     $divInfo.find("a.remove").hide();
+                } else { //로그인한 아이디가 쓴 글이면 수정,삭제만 보여준다
+                     $divInfo.find("a.reply").hide();
+                }*/
+				$.ajax({
+					url : backContextPath + "/board/" + no,
+					//data : "no=" + no, 
+					method: 'get',
+					success: function(jsonData){
+						if(jsonData.status == 0){
+							alert(jsonData.msg);
+						}else{
+							let repBoard = jsonData;
+							var $divInfo = $divDetail.find("div.info");
+							$divInfo.find("div.data>span.no").html(repBoard.boardNo);
+			                $divInfo.find("div.data>span.title").html(repBoard.boardTitle);
+			                $divInfo.find("div.data>span.id").html(repBoard.boardC.id);
+			                $divInfo.find("div.data>span.dt").html(repBoard.boardDt);
+			                $divInfo.find("div.data>textarea.content").html(repBoard.boardContent);
+			                $divInfo.find("div.data>span.viewcount").html(repBoard.boardViewcount);
+			                $trCurrentObj.find("div.viewcount").html(repBoard.boardViewcount);
+						if (repBoard.boardC.id != loginedId) { //로그인한 아이디가 쓴 글이 아니면 답글쓰기만 보여준다
+			                     $divInfo.find("div.data>textarea.content").attr("readonly", "readonly");
+			                     $divInfo.find("a.modify").hide();
+			                     $divInfo.find("a.remove").hide();
+			                } else { //로그인한 아이디가 쓴 글이면 수정,삭제만 보여준다
+			                     $divInfo.find("a.reply").hide();
+			                }
+						let letters = jsonData.letters;
+							if(letters){
+								let $spanLetters = $divInfo.find("div.data>span.letters");	
+								let spanLettersHtml = "";
+								$(letters).each(function(index, element){
+								//	let href = backContextPath + '/board/download?fileName='+ element;
+								//	spanLettersHtml += '<a href="'+href+'">첨부'+(index+1) + '</a>&nbsp;';
+									spanLettersHtml += '<span class="'+element+'">첨부'+(index+1) +'</span>';
+								});
+								$spanLetters.html(spanLettersHtml);
+							};
+							let image = jsonData.image;
+							
+							
+							
+							
+						}
+					},
+					error: function(xhr){
+						alert(xhr.status);
+					}
+				});
+			});
+		}
+		return false;
+
+
+
+
+
+
+});
+
+//--게시글 하나 클릭 끝--
+
+//--페이징그룹 중 페이지 하나 클릭 시작--//
+
+
+$("div.pagegroup").on("click", "span.active", function(){
+	let url = $(this).attr("class").split(/\s+/)[0];  
+	
+	$("div.tbody>div.tr.copy").remove();
+	
+	$.ajax({
+		url: backContextPath + url, 
+		method: 'get',
+		success:function(jsonData){
+			showList(jsonData);
+		},
+		error: function(xhr){
+			alert(xhr.status);
+		}
+		
+	})
+});
+	
+//--페이징그룹 중 페이지 하나 클릭 끝--//
+
+
+
+
+
+
+
+
+
+
+$(function(){
+	$.ajax({
+		url: backContextPath + '/board/list',
+		method: 'get',
+		success: function(jsonData){
+			showList(jsonData);
+		},
+		error: function(xhr){
+			alert(xhr.status);
+		}
+	});	
+});
+

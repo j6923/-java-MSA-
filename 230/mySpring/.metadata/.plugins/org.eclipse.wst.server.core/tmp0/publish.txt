@@ -1,0 +1,5 @@
+#Tomcat publish data
+#Mon Jan 24 14:56:01 KST 2022
+org.eclipse.jst.jee.server\:boardrestBack=C\:\\230\\SW\\apache-tomcat-9.0.56\\wtpwebapps\\boardrestBack
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\KOSTA\\.m2\\repository\\org\\springframework\\spring-web\\5.2.9.RELEASE\\spring-web-5.2.9.RELEASE.jar=C\:\\230\\SW\\apache-tomcat-9.0.56\\wtpwebapps\\boardrestBack\\WEB-INF\\lib\\spring-web-5.2.9.RELEASE.jar
+org.eclipse.jst.jee.server\:boardrestFront=C\:\\230\\SW\\apache-tomcat-9.0.56\\wtpwebapps\\boardrestFront

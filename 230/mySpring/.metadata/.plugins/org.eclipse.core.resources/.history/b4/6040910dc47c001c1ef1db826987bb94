@@ -1,0 +1,13 @@
+package com.my.customer.control;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class CustomerController {
+	@RequestMapping("/login")
+	public String login(String id, String pwd, HttpSession session) {
+		//비지니스로직호출 성공된 가정 
+	}
+
+}

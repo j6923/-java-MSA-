@@ -1,0 +1,5 @@
+package com.my.customer.control;
+
+public class CustomerController {
+
+}

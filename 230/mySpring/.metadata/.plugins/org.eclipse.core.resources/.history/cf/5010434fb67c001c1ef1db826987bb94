@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>메인(index.html)</title>
+    <link rel="stylesheet" href="./css/basic.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/basic.js"></script>
+    <script>
+        $(function () {
+        	
+        	let href = location.href; //현재사용중인 주소URL값 ex: http://localhost:8888/boardresfFront
+        	//현재사용중인 주소URL값 ex: http://localhost:8888/boardresfFront/write.html이라고 하면 locatlhost:8888
+        	///boardresfFront/write.html뒤에서 여기까지 
+        	console.log("href=" + href);
+        	console.log("location.host=" + location.host);//locatlhost:8888
+        	let index = href.indexOf(location.host) + location.host.length;  //href에서 문자열의 위치값을 얻어낸다. 
+        	console.log("index=" + index);
+        	frontContextPath = href.substring(index, href.indexOf("/", index+1));  //href.substring(21, )
+        	//마지막 /위치를 찾아서 부분문자열만 되는 것 
+        	console.log("frontContextPath=" + frontContextPath);
+
+        	
+        	
+        	
+            $("header").load(frontContextPath + "/header.html");
+            /*header영역에 load해라   */
+            /* js파일에 있는 frontContextPath에 있는 header.html  */
+            $("footer").load(frontContextPath + "/footer.html");
+            /* footer영역에 load해라  */
+        })
+    </script>
+
+<body>
+    <header></header>
+    <section></section>
+    <footer></footer>
+</body>
+
+</html>
