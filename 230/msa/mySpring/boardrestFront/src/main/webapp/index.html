@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>메인(index.html)</title>
+    <link rel="stylesheet" href="./css/basic.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/basic.js"></script>
+    <script>
+        $(function () {
+            $("header").load(frontContextPath + "/header.html");
+            /*header영역에 load해라   */
+            /* js파일에 있는 frontContextPath에 있는 header.html  */
+            $("footer").load(frontContextPath + "/footer.html");
+            /* footer영역에 load해라  */
+        })
+    </script>
+
+<body>
+    <header></header>
+    <section></section>
+    <footer></footer>
+</body>
+
+</html>
