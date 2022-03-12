@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="demo-1"/>
+<aop-project name="OrderWEB-1"/>
+<aop-project name="OrderWEB"/>
+<aop-project name="recoBOOTJPA"/>
+<aop-project name="orderBootJPA"/>
+<aop-project name="demojpa"/>
+<aop-project name="orderBoot"/>
+</aop-reference-model>

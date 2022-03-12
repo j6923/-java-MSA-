@@ -1,0 +1,5 @@
+2022-01-19 10:56:29.044  WARN 16468 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo]' package. Please check your configuration.
+2022-01-19 10:56:34.081 ERROR 16468 --- [main] com.example.demo.aop.MyAdvice            : Before
+2022-01-19 11:00:03.345  WARN 11252 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo]' package. Please check your configuration.
+2022-01-19 11:00:09.351 ERROR 11252 --- [main] com.example.demo.aop.MyAdvice            : Around 포인트컷메서드(list)호출전
+2022-01-19 11:00:09.797 ERROR 11252 --- [main] com.example.demo.aop.MyAdvice            : Around 포인트컷메서드(list)호출후

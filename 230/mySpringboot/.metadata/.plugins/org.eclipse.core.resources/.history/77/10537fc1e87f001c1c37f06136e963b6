@@ -1,0 +1,14 @@
+package com.my.order.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.my.order.vo.OrderInfo;
+
+public interface OrderRepository extends CrudRepository<OrderInfo, List> {
+
+	
+
+}

@@ -1,0 +1,23 @@
+1643108082331	Delete element
+1643113218450	Copy compilation unit
+1643113268204	Delete element
+1643113293120	Copy compilation unit
+1643113653262	Delete element
+1643129209535	Rename package 'com.my.repository'
+1643132140799	Delete element
+1643133354201	Delete element
+1643133835619	Delete element
+1643157665975	Delete element
+1643329678048	Delete element
+1643337797340	Rename type 'OrderRepository'
+1643337923376	Rename type 'OrderInfoRepository'
+1643337960806	Rename type 'OrderRepository'
+1643338008750	Rename type 'OrderRepositoryTest'
+1643353059503	Delete element
+1643353198187	Delete element
+1643353659663	Rename type 'OrderRepository'
+1643353873416	Rename type 'OrderRepositoryTest'
+1643358177564	Delete element
+1643358340032	Rename package 'com.my.order.repository'
+1643358454475	Rename package 'com.my.order.repository.OrderInfoRepository'
+1643358554094	Delete element

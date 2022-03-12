@@ -1,0 +1,77 @@
+package com.my.order.vo;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import com.my.product.vo.Product;
+
+@SequenceGenerator(name = "order_seq_generator",
+sequenceName = "ORDER_SEQ",
+initialValue = 1,
+allocationSize = 1
+)
+
+@Entity(name="orderline")
+@Table(name="order_line")
+public class OrderLine {
+	@Column(name="order_no")
+	@Id
+	//@ManyToOne
+	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, 
+    generator = "order_seq_guenerator"
+   )
+	private int orderNo;
+	
+	
+	@Id
+	@Column(name="order_product")
+	
+	private Product orderProduct;
+	
+	
+	private int orderQuantity;
+	public OrderLine() {
+	}
+	
+	
+	public OrderLine(int orderNo, Product orderProduct, int orderQuantity) {
+		super();
+		this.orderNo = orderNo;
+		this.orderProduct = orderProduct;
+		this.orderQuantity = orderQuantity;
+	}
+	
+	@Override
+	public String toString() {
+		return "OrderLine [orderNo=" + orderNo + ", orderProduct=" + orderProduct + ", orderQuantity=" + orderQuantity
+				+ "]";
+	}
+	public int getOrderNo() {
+		return orderNo;//get메서드 
+	}
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;//set메서드 
+	}
+	public Product getOrderProduct() {
+		return orderProduct; //get메서드 
+	}
+	public void setOrderProduct(Product orderProduct) {
+		this.orderProduct = orderProduct;  //set메서드 
+	}
+	public int getOrderQuantity() {
+		return orderQuantity;  //get메서드 
+	}
+	public void setOrderQuantity(int orderQuantity) {
+		this.orderQuantity = orderQuantity;  //set메서드 
+	}
+	
+	
+}
+

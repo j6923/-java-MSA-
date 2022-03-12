@@ -1,0 +1,24 @@
+2022-01-19 14:47:20.503  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. Connection.isValid(5) returned true
+2022-01-19 14:47:20.505  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. Connection.getAutoCommit() returned true
+2022-01-19 14:47:20.506  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. PreparedStatement.new PreparedStatement returned 
+2022-01-19 14:47:20.506  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. Connection.prepareStatement(SELECT * FROM customer WHERE id=?) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@34110e2d
+2022-01-19 14:47:20.511  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. PreparedStatement.setNull(1, 0) returned 
+2022-01-19 14:47:20.515  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. SELECT * FROM customer WHERE id=NULL  {executed in 3 ms}
+2022-01-19 14:47:20.516  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. PreparedStatement.execute() returned true
+2022-01-19 14:47:20.516  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. ResultSet.new ResultSet returned 
+2022-01-19 14:47:20.516  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. PreparedStatement.getResultSet() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@bccf5d8
+2022-01-19 14:47:20.516  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@864f925
+2022-01-19 14:47:20.516  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. ResultSet.getType() returned 1003
+2022-01-19 14:47:20.517  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. ResultSet.isClosed() returned false
+2022-01-19 14:47:20.518  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 
+|---|----|-----|--------|
+|id |pwd |name |address |
+|---|----|-----|--------|
+|---|----|-----|--------|
+
+2022-01-19 14:47:20.518  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. ResultSet.next() returned false
+2022-01-19 14:47:20.519  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. ResultSet.close() returned void
+2022-01-19 14:47:20.519  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. Connection.getMetaData() returned oracle.jdbc.driver.OracleDatabaseMetaData@3fc0cc94
+2022-01-19 14:47:20.519  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. PreparedStatement.close() returned 
+2022-01-19 14:47:20.520 ERROR 15172 --- [http-nio-9999-exec-3] com.my.customer.dao.CustomerDAOOracle    : c=null
+2022-01-19 14:47:20.533  INFO 15172 --- [http-nio-9999-exec-3] log4jdbc.log4j2                          : 1. Connection.clearWarnings() returned 

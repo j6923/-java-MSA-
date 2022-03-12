@@ -1,0 +1,105 @@
+package com.my.order.vo;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.my.customer.vo.Customer;
+
+@SequenceGenerator(name = "order_seq_generator",
+sequenceName = "ORDER_SEQ",
+initialValue = 1,
+allocationSize = 1
+)
+
+//주문 기본 
+@Entity(name = "order_info")
+@Table(name="order_info")
+
+public class OrderInfo {	
+	
+	@Id
+	//@Column(name="order_no")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, 
+    generator = "order_seq_guenerator"
+   )
+	private int orderNo;
+	
+	//@Column(name="order_id")
+		//@JoinColumn("order_id")
+		//@JoinTable("customer")
+	
+	@ManyToOne
+	
+	private Customer orderCustomer;
+	
+	//@Column(name="order_dt")
+	@CreationTimestamp
+	private Date orderDt;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name = "orderNo")
+	private List<OrderLine> lines;
+	public OrderInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public OrderInfo(int orderNo, Customer orderCustomer, Date orderDt, List<OrderLine> lines) {
+		super();
+	
+		this.orderNo = orderNo;
+		this.orderCustomer = orderCustomer;
+		this.orderDt = orderDt;
+		this.lines = lines;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "OrderInfo [orderNo=" + orderNo + ", orderCustomer=" + orderCustomer + ", orderDt=" + orderDt
+				+ ", lines=" + lines + "]";
+	}
+	public int getOrderNo() {
+		return orderNo;//get메서드 
+	}
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;  //set메서드 
+	}
+	public Customer getOrderCustomer() {
+		return orderCustomer;//get메서드 
+	}
+	public void setOrderCustomer(Customer orderCustomer) {
+		this.orderCustomer = orderCustomer;//set메서드 
+	}
+	public Date getOrderDt() { //get메서드 
+		return orderDt;
+	}
+	public void setOrderDt(Date orderDt) { //set메서드 
+		this.orderDt = orderDt;
+	}
+	public List<OrderLine> getLines() {// get메서드 
+		return lines;
+	}
+	public void setLines(List<OrderLine> lines) { //set메서드 
+		this.lines = lines;
+	}
+	
+}
