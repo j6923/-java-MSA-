@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>window.addEventListener('load', function(){
+            let btObjArr= document.querySelectorAll('button');
+            btObjArr[0].addEventListener('click',function(){
+                let url = 'event.html';
+                let target = '';
+                //그 창을 또 띄우지 않기 위해서 이름을 준다. 
+                let features = 'width=300px, height=300px';
+                window.open(url, target, features);  
+
+                // window.open();//새창이 하나 띄워진다. 
+                
+            });
+
+
+        });
+        </script>
+    </head>
+    <body>
+        <button>새창띄우기</button>
+    </body>
+</html>

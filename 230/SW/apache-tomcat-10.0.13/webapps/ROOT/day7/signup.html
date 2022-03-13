@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div.signup>form>button[type=submit]{
+                /* div의 signup클래스의 자식 form 자식 button */
+                /* display:none; */
+                visibility: hidden;  
+                /* 보이는 것을 숨긴다. */
+            
+            }
+        </style>
+        <script> 
+        // 윈도우의 addEventListener불러서 load하는데 load를 하면 
+            window.addEventListener('load', function(){
+                // 가입버튼객체 찾기
+                let submitBtObj = document.querySelector('div.signup>form>button[type=submit]'); 
+                /*--1. 아이디입력란에 포커스를 받으면 가입버튼이 사라진다 START--*/
+                let idObj= 
+                document.querySelector('div.signup>form>input[name=id]');
+                idObj.addEventListener('focus', function(){
+                    submitBtObj.style.visibility = 'hidden';  //'visible'
+                    //일단 없애야 하니까 hidden 
+                });
+                /*--아이디입력란에 포커스를 받으면 가입버튼이 사라진다. END*/
+                
+
+                /*--아이중복확인버튼 클릭되었을때 START--*/
+
+
+
+
+                let iddupchkBtObj = document.querySelector('div.signup>form>button.iddupchk');
+                iddupchkBtObj.addEventListener('click',function(){
+                    //아이디 입력값 유효성 검사  
+                   if(idObj.value.trim()== ''){
+                    //input의 값은 valueproperty에 저장되어 value한다. 
+                    //value는 문자열 타입이고 문자열 타입의 값이 앞 뒤 공백 자리는 메서드가 trim이다. 
+                    //의미있는 값이 아닐 경우, 즉 빈문자열인 경우  
+                    alert('아이디를 입력하세요');
+                    idObj.focus(); //idObj의 포커스를 이동시킨다. 
+                    return false; //아래 구문을 진행하지 않는다.     
+                    }
+                    //form객체찾기 
+                    // let formObj=document.querySelector('div>signup>form');
+                    // formObj.action='http://localhost:8888/iddupchk'; //전송할 URL에 
+                    // formObj.method = 'get'; //전송방식
+                    // formObj.submit(); //전송
+                    //form이 전송되면 그 화면을 계속 유지하지는 못한다. 즉 결과만 보여준다.
+                    //기존화면을 다 지워버리고 응답결과만 화면에 채워진다. 
+                    //그래서 위와 같이 하지 않고 현재는 전송했다고 친다. \
+
+                    
+                    //ajax기술로 전송 
+                    //응답상태가 '이미 사용중인 아이디'인 경우 경고창보여주기 
+                    //응답상태가 '사용가능한 아이디'인 경우 가입버튼보여주기 
+                    submitBtObj.style.visibility = 'visible';
+
+
+
+                });
+                /*--아이디중복확인버튼 클릭되었을때 END--*/
+
+
+                /*--폼 전송되었을 때 START--*/
+                let formObj=document.querySelector('div>signup>form'); //폼 객체 찾기 
+                formObj.addEventListener('submit',function(event){
+                    //비밀번호값 유효성검사 
+                    let passwordObjArr = document.querySelectorAll('div.signup>form>input[type=password]');
+                    console.log(passwordObjArr[0].value);
+                    console.log(passwordObjArr[1].value);
+                    //배열로 찾아올 것이다. 
+                    if(passwordObjArr[0].value!=passwordObjArr[1].value){
+                        //form 을 읽지 못해 
+                        //addevent form obj가 null이 null 
+
+                 
+                    //value property가 같은가 비교
+                    //value property에는 사용자가 입력한 값이 있다. 
+                        alert('비밀번호가 일치하지 않습니다.'); 
+                        passwordObjArr[0].focus(); //비밀번호가 다를 경우 첫번째 비밀번호 위치로 이동한다. 
+                        //다르면 더 이상 진행하지 않아
+                        //callback function을 빠져나간다. 
+                        event.preventDefault();
+                        return false;//
+                }
+                
+                
+                }); 
+
+                /*--폼 전송되었을 때 END--*/
+
+                //3. END 
+
+            });
+        </script>
+    </head>
+    <body>
+    <div class="signup">
+        <form action="http://localhost:8888/signup" method="post">
+    <h1>고객가입</h1>
+    
+        
+            <label for="id">아이디: </label>
+            <input type = "text" name = "id" id="id" required>
+            <button type = "button" class="iddupchk"> 아이디중복확인</button>
+            <br>
+            <label for="pwd">비밀번호: </label>
+            <input type = "password" name = "pwd" id="pwd" required>
+            <br>
+            <!-- <button type = "password"> 비밀번호확인</button> -->
+            <label for="pwd1">비밀번호확인: </label>
+            <input type = "password" name = "pwd1" id="pwd1" required>
+            <br>
+            <label for="pwd">이름: </label>
+            <input type = "text" name = "name" id="name" required>
+            <br>
+            주소: <input type="text">
+            <button type="button" class="serchzip">우편번호찾기</button>
+            <input type="text"> <br>
+            <input type="text" name= "address">
+            <br>
+            <button type="submit">가입</button>
+            <button type="reset">CLEAR</button>
+        </form>
+        </div>
+    </body>
+
+
+
+</html>
+

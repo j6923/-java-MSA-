@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div.selected>select.sigungu{
+                display: none;}
+            div.a{
+                width: 500px;
+                background-color:gray;
+
+            
+
+            }
+            
+        </style>
+        <script>
+            window.addEventListener("load", function(){ 
+                //DOM트리에서 버튼 객체찾기 
+                // console.log(document.querySelector("div.calculator>button"));
+                //자식객체중 버튼 객체를 찾아라 
+                // 객체를 하나만 찾아온다. 
+                let calcBtObjArr = document.querySelectorAll("div.calculator>button");
+
+               
+                   //객체를 모두 찾아온다     
+                // console.log(calcBtObjArr);
+                let calcInputObj = document.querySelector('div.calculator>input[type=text]')
+
+                 //각 button이 클릭될 때마다 button의 textnode값을 
+                    //input의 value속성으로 대입한다. 
+                for(var i=0; i<calcBtObjArr.length;i++){
+                // 여러개인 것을 감안하자면 위와 같고 하나면 그냥 input만 써도 무방 
+                var calcBtObj = calcBtObjArr[i]; //0번째 버튼 
+                // let calcBtObj = calcBtObjArr[0];
+               
+                    
+                    //value속성에 numText를 넣는다 
+                    calcBtObjArr.forEach(function(calcBtObj, i){
+                        calcBtObj.addEventListener('click',function(){
+                        var numText = calcBtObj.innerText; //74등 숫자가 innertext의 값이 된다. 
+                        calcInputObj.value = numText;
+                    });
+
+                });
+                    
+                
+               
+                }
+                    /* -------checkbox들------*/
+                    //Dom트리에서 checkbox 객체들 찾기
+                    var checkboxObjArr = document.querySelectorAll('div.checked>input[type=checkbox]');
+                    //여러개 찾을 때는 all
+                    //한개 찾을 때는 querySelector
+                    var chkeckboxAllObj = checkboxObjArr[0];
+                    chkeckboxAllObj.addEventListener('click', function(){
+                        // if(chkeckboxAllObj.checked){
+                        //     alert('All 체크되었습니다. ');
+                        // //window 앞에 생략된 것. 
+                        // }else{
+                        //     //선택이 해제된 경우
+                        //     alert('All 체크해제되었습니다.');
+                        // }
+                        for(var i=1; i<checkboxObjArr.length;i++){
+                            checkboxObjArr[i].checked = chkeckboxAllObj.checked;
+                        }
+
+                    });
+                    /*--- select ----*/
+                    //DOM트리에서 select객체 찾기 
+                    var selectObj = document.querySelector('div.selected>select.sido');
+                    // selectObj.addEventListener('click', function(){
+                    //     console.log(selectObj.value+"클릭됨");
+                    //     //이벤트 사이에서도 순서가 있다. 
+                    //     //
+                    // });
+
+
+
+                    var selectObj2 = document.querySelector('div.selected>select.sigungu'); 
+                    //
+
+                    selectObj.addEventListener('change', function(){
+                        console.log(selectObj.value+"변경됨");
+                        // if(selectObj.value != '시도를 선택하세요'){
+
+                        // }
+
+                        selectObj2.style.display = 'none';
+                        //위의 값을 사라지게 했다가 
+                        let options = '';
+                        switch(selectObj.value){
+                            case '서울시':
+                                options += '<option>강복구</option>';
+                                options += '<option>강동구</option>';
+                                options += '<option>강남구</option>';
+                                options += '<option>강서구</option>';
+                                selectObj2.innerHTML = options;
+                                selectObj2.style.display='inline-block';
+                                break;
+                            case '경기도':
+                                options += '<option>성남시</option>';
+                                options += '<option>안양시</option>';
+                                options += '<option>파주시</option>';
+                                options += '<option>의정부시</option>';
+                                selectObj2.innerHTML = options;
+                                selectObj2.style.display='inline-block';
+                                break;
+                            case '전북':
+                                options += '<option>전주시</option>';
+                                options += '<option>익산시</option>';
+                                options += '<option>군산시</option>';
+                                selectObj2.innerHTML = options;
+                                selectObj2.style.display='inline-block';
+                                break;
+                               
+
+                            case '경북':
+                                options += '<option>포항시</option>';
+                                options += '<option>김천시</option>';
+                                selectObj2.innerHTML = options;
+                                selectObj2.style.display='inline-block';
+                                
+                                break;
+                        }
+                    });
+                   
+                    /*-----keyboard---*/
+                    //DOM트리에서 div.keyboard의 input객체 찾기 
+                    var inputObj = document.querySelector('div.keyboard>input[type=text]');
+                    inputObj.addEventListener('click', function(){
+                        console.log('click');
+
+                    });
+
+
+                    inputObj.addEventListener('focus', function(){
+                        console.log('focus');
+                    
+
+                });
+
+                //keydown->keypress->keyup 
+                inputObj.addEventListener('keyup', function(event){
+                    alert("입력된값:" + event.key);
+                    //키보드에 관한 이벤트는 객체로서 key코드나 key 이벤트를 가질 수 있다. 
+                    //key값을 확인하기 
+                    if(event.key=='Enter'){
+                        //엔터키가 눌렸을 때 ...해라 
+                    }
+                    console.log(inputObj.value);
+                    let inputValue = inputObj.value;
+                    //String타입
+                    inputObj.value=inputValue.toUpperCase();
+                    //대문자로 해서 inputobj에 대입하도록 한다. 
+                    
+
+                });
+                /*---submit ---*/
+                //1. 전송버튼 click이벤트 발생, 이벤트핸들러실행 
+                //2. 폼 submit 이벤트 발생, 이벤트핸들러실행
+                //3. 기본이벤트핸들러 실행 
+
+                //1,2번 중 둘 중 하나 선택하라고 하면 2번을 권유. 좀더 submit과 관련된 이벤트이기 떄문에  
+                //DOM트리에서 div.submit>form객체찾기 
+                let formObj = document.querySelector('div.submit>form')
+                formObj.addEventListener('submit', function(event){
+                     //form객체에서 submit이벤트가 발생할 수 있다 
+                    alert('폼 submit됨.'); //submit되면 이벤트 발생 
+                    event.preventDefault();  //기본이벤트핸들러 금지 
+                    //네이버로 안 가게 하기 
+                });
+                //전송되기 전에 
+
+               
+                //DOM트리에서 div.submit>form>button객체찾기 
+                let submitBtObj = document.querySelector('div.submit>form>button');
+                submitBtObj.addEventListener('click', function(){
+                    alert('submit버튼 클릭됨');
+                });
+                
+                /*---a--------*/
+                let divAObj = document.querySelector('div.a');
+                divAObj.addEventListener('click', function(){
+                    divAObj.style.backgroundColor = 'red';
+                    divAObj.style.border = '1px solid';
+                    //클릭 이벤트가 자식쪽에서 발생한 이벤트가 부모에게도 전파되는 것을 이벤트 버블링이라고 한다.  
+                    //자식 이벤트가 발생하고 부모쪽의 이벤트도 발생하게 된다. 
+                    //이벤트 버블링 막고 싶으면 자식쪽에서 전파를 금지시켜야 함. 
+                });
+                let aObj = document.querySelector('div.a>a');
+                aObj.addEventListener('click', function(event){
+                    alert("a클릭됨");
+
+                    //js에서는 특수문자중 _, $만 가능 
+                    //CSS의 property중 background-color같은 - 포함프로퍼티를 
+                    //js에서 사용하려면 backgroundColor로 사용해야함. 
+                    aObj.style.backgroundColor = 'yellow';
+                    //배경화면 바꾸기 
+                    
+                    //기본이벤트 처리 안하기 
+                    event.preventDefault();  //기본이벤트핸들러 금지 
+                    //매개변수 아무 이름이나 상관없음 
+                    //매개변수 선언하고 매개변수.preventDefault하면 됨. 
+
+                    event.stopPropagation(); //이벤트 전파 중지 
+
+                    
+                });   
+            });
+        </script>
+    </head>
+    <body>
+       
+        <div class="calculator">
+            <input type="text" readonly>
+            <!-- readonly는 쓰기는 금지이고 읽기만 가능하다.  -->
+            
+            
+            <button>7</button><button>8</button><button>9</button>
+            
+            
+            <button>4</button><button>5</button><button>6</button>
+           
+            
+            <button>1</button><button>2</button> <button>3</button>
+            <button>0</button>
+            </div>
+
+
+
+        <div class =" checked">
+            <input type = "checkbox"> All<br>
+            <input type="checkbox" checked>JAVA&nbsp;&nbsp;
+            <input type="checkbox">SQL&nbsp;&nbsp;
+            <input type="checkbox">JAVASCRIPT&nbsp;&nbsp;
+
+        </div>
+
+        <div class="selected">
+            <select class = "sido">
+                <option>시도를 선택하세요</option>
+                <option>서울시</option>
+                <option>경기도</option>
+                <option>전북</option>
+                <option>경북</option>
+               <!-- 옵션이라는 하위태그 필요하고 첫번째 옵션이 보여질 것이고  -->
+
+            </select>
+            <select class="sigungu">
+                <option>시군구를 선택하세요</option>
+               //서울시와 경기도 선택 되었던 값이 달라야 하므로 
+               //자바스크립트로 만들어보자. 
+               //시도를 선택해야 시군구를 선택할 수 있으므로 화면에서 안 보이게 하고 
+                <option></option>
+
+            </select>
+
+        </div>
+        <div class="keyboard">
+            <input type="text">
+
+        </div>
+        <hr> 
+        <!-- 수평선긋기  -->
+        <div class="submit">
+        
+            <form method="get" action="http://naver.com">
+                <input type="text" name="t" value = "test"><br>
+                <button>전송</button>
+                <!--input type="submit"을 한 것과 같음-->
+                <!-- 클릭 이벤트 처리가 미리 등록되어 있다.  -->
+            </form>
+        </div>
+        <div class="a">
+            <a href="http://www.google.com">구글</a>
+            <!-- 이벤트 핸들러 작성하지 않았는데 a태그는 클릭되었을 때 기본 작업을 해주고 있다. 
+            기본 이벤트 처리가 있는 것이다. 
+            기본 이벤트 처리를 안 하고 싶다고 하면 기본 이벤트 핸들러를 막아야 한다.  -->
+        </div>
+    </body>
+</html>
