@@ -4,3 +4,4 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
 [[:space:]]230/SW/apache-tomcat-10.0.13/ filter=lfs diff=lfs merge=lfs -text
 230/SW/apache-tomcat-9.0.56/ filter=lfs diff=lfs merge=lfs -text
+230/SW/sqldeveloper/ filter=lfs diff=lfs merge=lfs -text
